@@ -1,0 +1,33 @@
+<header class="public-header">
+    <div class="page-wrap nav-inner">
+        <a href="{{ path('app_home') }}" class="brand" aria-label="MAAK home">
+            <span class="brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5v-16Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20M9 7h7M9 10.5h7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+            <span>MAAK<span class="brand-dot">.</span></span>
+        </a>
+        <nav class="public-links" aria-label="Main navigation">
+            <a href="{{ path('app_courses') }}">Courses</a>
+            <a href="{{ path('app_courses') }}#subjects">Subjects</a>
+            <a href="{{ path('app_about') }}">How it works</a>
+        </nav>
+        <div class="nav-actions">
+            {% if app.user %}
+                <a class="button button-ghost" href="{{ path('app_dashboard') }}">Dashboard</a>
+                <a class="button button-primary" href="{{ path('app_logout') }}">Log out <span aria-hidden="true">→</span></a>
+            {% else %}
+                <a class="button button-ghost" href="{{ path('app_login') }}">Log in</a>
+                <a class="button button-primary" href="{{ path('app_register') }}">Create account <span aria-hidden="true">→</span></a>
+            {% endif %}
+        </div>
+        <details class="mobile-menu">
+            <summary aria-label="Open navigation"><span></span><span></span><span></span></summary>
+            <nav>
+                <a href="{{ path('app_courses') }}">Courses</a>
+                <a href="{{ path('app_courses') }}#subjects">Subjects</a>
+                <a href="{{ path('app_about') }}">How it works</a>
+                {% if app.user %}<a href="{{ path('app_dashboard') }}">Dashboard</a>{% else %}
+                    <a href="{{ path('app_login') }}">Log in</a><a href="{{ path('app_register') }}">Create account</a>
+                {% endif %}
+            </nav>
+        </details>
+    </div>
+</header>

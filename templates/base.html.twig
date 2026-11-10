@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale|default('en') }}" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
+    <meta name="description" content="{% block meta_description %}Affordable recorded courses from university students for school learners and their families.{% endblock %}">
+    <title>{% block title %}MAAK — Learn more. Spend less. Grow together.{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    {% block stylesheets %}{% endblock %}
+    {% block javascripts %}{{ importmap('app') }}{% endblock %}
+</head>
+<body class="min-h-screen bg-background text-foreground antialiased">
+    {% block body %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+{% block title %}Create a course — MAAK{% endblock %}
+{% block body %}
+    <div class="dashboard-layout">
+        <aside class="dashboard-sidebar">
+            <a href="{{ path('app_home') }}" class="brand sidebar-brand">
+                <span class="brand-mark">▤</span>MAAK<span class="brand-dot">.</span>
+            </a>
+            <div class="sidebar-caption">Creator studio</div>
+            <nav class="sidebar-nav">
+                <a href="{{ path('app_teacher_dashboard') }}">
+                    ⌂ <span>Dashboard</span>
+                </a>
+                <a href="{{ path('app_teacher_section', {section: 'courses'}) }}">
+                    ▤ <span>My Courses</span>
+                </a>
+                <a class="active" href="{{ path('app_teacher_course_new') }}">
+                    ＋ <span>Create Course</span>
+                </a>
+            </nav>
+        </aside>
+        <main class="dashboard-main">
+            <header class="dashboard-topbar">
+                <a href="{{ path('app_teacher_dashboard') }}">← Back to dashboard</a>
+            </header>
+            <div class="dashboard-content">
+                <div class="dashboard-heading">
+                    <div>
+                        <p class="eyebrow">Creator studio</p>
+                        <h1>Create a course</h1>
+                        <p>Build your course step by step and submit it for review.</p>
+                    </div>
+                </div>
+                <div class="panel-card">
+                    <div class="builder-steps">
+                        <span class="current">01 Information</span>
+                        <span>02 Curriculum</span>
+                        <span>03 Content</span>
+                        <span>04 Pricing</span>
+                        <span>05 Preview</span>
+                        <span>06 Submit</span>
+                    </div>
+                    <form class="auth-form form-grid">
+                        <label class="full-field">
+                            Course title
+                            <input placeholder="e.g. Algebra Essentials" required>
+                        </label>
+                        <label class="full-field">
+                            Short description
+                            <textarea rows="3" placeholder="What will learners gain from this course?"></textarea>
+                        </label>
+                        <label>
+                            Subject
+                            <select>
+                                <option>Mathematics</option>
+                                <option>Physics</option>
+                                <option>Chemistry</option>
+                                <option>English</option>
+                                <option>French</option>
+                            </select>
+                        </label>
+                        <label>
+                            School level
+                            <select>
+                                <option>Primary</option>
+                                <option>Middle school</option>
+                                <option>High school</option>
+                            </select>
+                        </label>
+                        <label>
+                            Price (DT)
+                            <input type="number" min="0" placeholder="25">
+                        </label>
+                        <label>
+                            Course thumbnail
+                            <input type="file" accept="image/*">
+                        </label>
+                        <button class="button button-primary full-field" type="button">Save draft and continue →</button>
+                    </form>
+                    <p class="muted tiny">Course creation UI is migrated; persistence and media upload will be wired to the Course domain.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock %}

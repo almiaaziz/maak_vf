@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block title %}Browse courses — MAAK{% endblock %}
+{% block body %}{% include 'components/_navbar.html.twig' %}
+<main class="page-wrap catalogue-page">
+    <div class="page-intro"><p class="eyebrow">Find your next lesson</p><h1>Explore courses</h1><p>Discover clear, affordable courses created by university students.</p></div>
+    <form class="catalogue-search" method="get" action="{{ path('app_courses') }}"><label class="search-field"><span>⌕</span><input type="search" name="q" value="{{ searchQuery }}" placeholder="Search courses, subjects or teachers..."></label><button class="button button-primary" type="submit">Search courses</button></form>
+    <div class="catalogue-layout">
+        <aside class="filters"><div class="filter-head"><h2>Filters</h2><a href="{{ path('app_courses') }}">Clear all</a></div>
+            <form method="get" action="{{ path('app_courses') }}">
+                {% if searchQuery %}<input type="hidden" name="q" value="{{ searchQuery }}">{% endif %}
+                <fieldset><legend>School level</legend>{% for level in ['Primary','Middle school','High school'] %}<label class="filter-option"><input type="radio" name="level" value="{{ level }}" {% if selectedLevel == level %}checked{% endif %}> {{ level }}</label>{% endfor %}</fieldset>
+                <fieldset><legend>Subject</legend>{% for subject in subjects %}<label class="filter-option"><input type="radio" name="subject" value="{{ subject }}" {% if selectedSubject == subject %}checked{% endif %}> {{ subject }}</label>{% endfor %}</fieldset>
+                <fieldset><legend>Price</legend>{% for value,label in {'free':'Free','under20':'0–20 DT','20to50':'20–50 DT','over50':'50+ DT'} %}<label class="filter-option"><input type="radio" name="price" value="{{ value }}" {% if selectedPrice == value %}checked{% endif %}> {{ label }}</label>{% endfor %}</fieldset>
+                <button class="button button-primary filter-submit" type="submit">Apply filters</button>
+            </form>
+        </aside>
+        <section class="catalogue-results"><div class="results-head"><div><strong>{{ courses|length }} courses</strong><span> to explore</span></div><label class="sort-control">Sort by <select name="sort"><option>Most popular</option><option>Highest rated</option><option>Price: low to high</option></select></label></div>
+            {% if courses is not empty %}<div class="course-grid">{% for course in courses %}{% include 'components/_course_card.html.twig' with {course: course} %}{% endfor %}</div>{% else %}<div class="empty-state"><span>⌕</span><h2>No courses found</h2><p>Try changing your search or removing a filter.</p><a class="button button-outline" href="{{ path('app_courses') }}">Clear filters</a></div>{% endif %}
+        </section>
+    </div>
+</main>{% include 'components/_footer.html.twig' %}{% endblock %}

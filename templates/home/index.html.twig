@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block title %}MAAK — Learn more. Spend less. Grow together.{% endblock %}
+{% block body %}
+{% include 'components/_navbar.html.twig' %}
+<main>
+    <section class="hero">
+        <img src="{{ asset('images/maak/maak-hero.jpg') }}" alt="A parent helping children learn together" class="hero-photo">
+        <div class="hero-shade"></div>
+        <div class="page-wrap hero-content">
+            <span class="eyebrow-pill"><span>✦</span> Learning feels better together</span>
+            <h1>Learn more.<br>Spend less.<br><em>Grow together.</em></h1>
+            <p>Discover affordable courses created by university students and help every learner progress at their own pace.</p>
+            <div class="hero-actions"><a href="{{ path('app_courses') }}" class="button button-primary button-lg">Explore courses <span>→</span></a><a href="{{ path('app_register_teacher') }}" class="button button-outline button-lg">Become a teacher <span>↗</span></a></div>
+            <div class="hero-trust"><span class="avatar-stack"><i>AB</i><i>YT</i><i>IM</i></span> Made for every kind of learner</div>
+        </div>
+    </section>
+    <section class="stats-strip"><div class="page-wrap stats-grid">
+        <div><strong>500+</strong><span>Courses <small>· illustrative</small></span></div><div><strong>200+</strong><span>Teachers <small>· illustrative</small></span></div><div><strong>1,500+</strong><span>Learners <small>· illustrative</small></span></div><div><strong>20+</strong><span>Subjects <small>· illustrative</small></span></div>
+    </div></section>
+    <section class="section-space page-wrap">
+        <div class="section-heading"><div><p class="eyebrow">Made for curious minds</p><h2>Courses worth exploring</h2><p>Clear lessons, real progress, accessible prices.</p></div><a href="{{ path('app_courses') }}" class="text-link">View all courses <span>→</span></a></div>
+        <div class="course-grid">{% for course in courses %}{% include 'components/_course_card.html.twig' with {course: course} %}{% endfor %}</div>
+    </section>
+    <section class="section-space subjects-section" id="subjects"><div class="page-wrap">
+        <p class="eyebrow">Follow your curiosity</p><h2>Explore by subject</h2>
+        <div class="subject-grid">{% set icons = ['∑','⚛','⚗','✿','Aa','文','⌘','</>'] %}{% for subject in subjects %}<a class="subject-card" href="{{ path('app_courses', {subject: subject}) }}"><span>{{ icons[loop.index0] }}</span><strong>{{ subject }}</strong><b>↗</b></a>{% endfor %}</div>
+    </div></section>
+    <section class="section-space page-wrap"><div class="center-heading"><p class="eyebrow">Simple from the start</p><h2>A better way to keep learning</h2></div>
+        <div class="steps-grid"><article><span class="step-icon">⌕</span><b>01</b><h3>Find a course</h3><p>Explore subjects and choose a course that fits your learner.</p></article><article><span class="step-icon">▷</span><b>02</b><h3>Learn at your pace</h3><p>Follow bite-sized lessons whenever it works for your family.</p></article><article><span class="step-icon">✧</span><b>03</b><h3>See the progress</h3><p>Track each child’s learning and celebrate every step forward.</p></article></div>
+    </section>
+    <section class="teacher-cta"><div class="page-wrap teacher-cta-inner"><div><p class="eyebrow">Share what you know</p><h2>Turn your knowledge into an opportunity.</h2><p>Create clear, helpful courses and make quality learning more accessible.</p><a href="{{ path('app_register_teacher') }}" class="button button-primary button-lg">Become a teacher <span>→</span></a></div><div class="teacher-illustration"><div class="teacher-note">✦ Your knowledge matters</div><div class="teacher-orbit">MAAK<span>Academy</span></div><div class="teacher-note note-bottom">Teach · Inspire · Grow</div></div></div></section>
+    <section class="section-space family-section"><div class="page-wrap family-grid"><div><p class="eyebrow">Built for families</p><h2>One account. Multiple children. Shared learning.</h2><p>Buy a course once and every child in your account can learn from it. Follow each child’s progress individually, all in one place.</p><a href="{{ path('app_register_parent') }}" class="button button-primary button-lg">Start as a parent <span>→</span></a></div>
+        <div class="family-card"><div class="family-parent"><span class="family-icon">♧</span><div><strong>Parent account</strong><small>Your family’s learning space</small></div></div><div class="family-connector"></div><div class="family-children"><div><i>Y</i><b>Youssef</b></div><div><i>S</i><b>Sara</b></div><div><i>+</i><b>Your child</b></div></div><div class="family-connector"></div><div class="family-course"><span>▤</span><b>One course. Access for every child.</b><strong>✓</strong></div></div>
+    </div></section>
+    <section class="section-space page-wrap bottom-cta"><p class="eyebrow">Your next step starts here</p><h2>Ready to learn together?</h2><p>Find the right course for your family and make progress, one lesson at a time.</p><a class="button button-primary button-lg" href="{{ path('app_courses') }}">Explore all courses <span>→</span></a></section>
+</main>
+{% include 'components/_footer.html.twig' %}
+{% endblock %}

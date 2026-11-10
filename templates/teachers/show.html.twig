@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ teacher.name }} — MAAK{% endblock %}
+{% block body %}{% include 'components/_navbar.html.twig' %}
+<main class="page-wrap teacher-page">
+    <div class="teacher-cover"><div class="teacher-avatar teacher-avatar-xl">{{ teacher.initials }}</div><div><p class="eyebrow">Meet the teacher</p><h1>{{ teacher.name }}</h1><p>{{ teacher.level }} · {{ teacher.field }}</p><div class="teacher-meta"><span>★ {{ teacher.rating }} teacher rating</span><span>{{ courses|length }} courses</span><span>{{ teacher.university }}</span></div></div></div>
+    <section class="teacher-bio"><h2>About {{ teacher.name|split(' ')[0] }}</h2><p>{{ teacher.bio }}</p><p class="muted">University: {{ teacher.university }}</p></section>
+    <section class="teacher-courses"><div class="section-heading"><div><p class="eyebrow">Learn from {{ teacher.name|split(' ')[0] }}</p><h2>Courses by this teacher</h2></div><span class="muted">{{ courses|length }} courses</span></div><div class="course-grid">{% for course in courses %}{% include 'components/_course_card.html.twig' with {course: course} %}{% endfor %}</div></section>
+</main>{% include 'components/_footer.html.twig' %}{% endblock %}

@@ -1,0 +1,12 @@
+<footer class="site-footer">
+    <div class="page-wrap footer-main">
+        <div class="footer-brand">
+            <a href="{{ path('app_home') }}" class="brand"><span class="brand-mark"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5v-16Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20" fill="none" stroke="currentColor" stroke-width="1.7"/></svg></span>MAAK<span class="brand-dot">.</span></a>
+            <p>Learning feels better together. Discover affordable courses and help every learner move forward.</p>
+        </div>
+        <div><h3>Explore</h3><a href="{{ path('app_courses') }}">Courses</a><a href="{{ path('app_courses') }}#subjects">Subjects</a><a href="{{ path('app_about') }}">How it works</a></div>
+        <div><h3>For teachers</h3><a href="{{ path('app_register_teacher') }}">Become a teacher</a><a href="{{ path('app_login') }}">Teacher login</a></div>
+        <div><h3>MAAK</h3><a href="{{ path('app_about') }}">About</a><a href="mailto:hello@maak.tn">Contact</a><a href="#">Terms</a><a href="#">Privacy</a></div>
+    </div>
+    <div class="footer-bottom"><div class="page-wrap">© {{ "now"|date("Y") }} MAAK. Made for every kind of learner.</div></div>
+</footer>

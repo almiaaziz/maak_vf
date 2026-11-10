@@ -1,0 +1,13 @@
+<article class="course-card">
+    <a class="course-image-link" href="{{ path('app_course_show', {id: course.id}) }}">
+        <img src="{{ asset('images/maak/' ~ course.image) }}" alt="{{ course.subject }} course" class="course-image">
+        <span class="course-subject">{{ course.subject }}</span>
+    </a>
+    <div class="course-card-content">
+        <div class="course-meta"><span>{{ course.level }}</span><span>◷ {{ course.duration }}</span></div>
+        <h3><a href="{{ path('app_course_show', {id: course.id}) }}">{{ course.title }}</a></h3>
+        <p class="course-teacher">By <a href="{{ path('app_teacher_public', {id: course.teacherId}) }}">{{ course.teacher }}</a></p>
+        <div class="course-rating"><strong>★ {{ course.rating }}</strong><span>({{ course.reviews }} reviews)</span><span class="lesson-count">▤ {{ course.lessonCount }} lessons</span></div>
+        <div class="course-card-bottom"><div class="price"><strong>{{ course.price }} DT</strong>{% if course.oldPrice is defined %}<del>{{ course.oldPrice }} DT</del>{% endif %}</div><a class="card-arrow" href="{{ path('app_course_show', {id: course.id}) }}" aria-label="View course">↗</a></div>
+    </div>
+</article>

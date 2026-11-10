@@ -1,0 +1,21 @@
+framework:
+    rate_limiter:
+        login:
+            policy: 'sliding_window'
+            limit: 5
+            interval: '15 minutes'
+
+        registration:
+            policy: 'sliding_window'
+            limit: 5
+            interval: '1 hour'
+
+        password_reset:
+            policy: 'sliding_window'
+            limit: 4
+            interval: '1 hour'
+
+        email_verification:
+            policy: 'sliding_window'
+            limit: 5
+            interval: '1 hour'
